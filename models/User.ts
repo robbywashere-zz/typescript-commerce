@@ -1,5 +1,5 @@
 import { Model } from '../types/models';
-import Sequelize from 'sequelize';
+import * as Sequelize from 'sequelize';
 
 const { STRING } = Sequelize;
 
@@ -32,4 +32,4 @@ const UserModel: Model = {
     },
 }
 
-export default ItemModel;
+export default UserModel;

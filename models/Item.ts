@@ -1,5 +1,5 @@
 import { Model } from '../types/models';
-import Sequelize from 'sequelize';
+import * as Sequelize from 'sequelize';
 
 const { STRING } = Sequelize;
 
@@ -11,7 +11,8 @@ const ItemModel: Model = {
             allowNull: false
         },
     },
-    Init({ Item, Category }){
+    Init({ Item, Category, Photo }){
+        Item.hasMany(Photo);
         Item.belongsToMany(Category,{ through: 'ItemCategory' });
     }
 }

@@ -1,8 +1,9 @@
 import { readdirSync  } from 'fs'; 
 import { Models, Model, SuperModel } from '../types/models';
 import * as sequelize from "sequelize";
+import db from '../db'
 
-export default function loadModelDefinitions(Sequelize: sequelize.Sequelize, directory:string = __dirname): Models {
+export function loadModelDefinitions(Sequelize: sequelize.Sequelize, directory:string = __dirname): Models {
     let ModelsMap : Models; 
     const files: Array<string> = readdirSync(directory)
     .filter( (path:string) => path.slice(0,5) !== "index" && path.slice(0,1) !== "_");
@@ -24,3 +25,5 @@ export default function loadModelDefinitions(Sequelize: sequelize.Sequelize, dir
     }
     return ModelsMap;
 }
+
+export default loadModelDefinitions(db);
